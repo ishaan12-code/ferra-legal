@@ -35,24 +35,29 @@ a { color: #2F6F4E; }
 
 <h2>What we collect</h2>
 
-<p><strong>Receipt photos.</strong> When you scan a receipt, the photo is sent over an encrypted connection to our server, which passes it to Anthropic&#x27;s Claude API to read the text on it. We do not keep a copy of the photo on our server after the response is returned.</p>
+<p><strong>Receipt photos.</strong> When you scan a receipt, the photo is sent over an encrypted connection to our server, which passes it to Anthropic&#x27;s Claude API to read the text on it. Our server keeps no copy once the response is returned. Anthropic may retain what it is sent under its own retention terms - see <strong>How long we keep things</strong> below.</p>
 
-<p><strong>Receipt data.</strong> The merchant, date, line items and amounts read from your receipt are stored <strong>on your device only</strong>. We never receive them as data, and no amount from a receipt appears in the usage events described below. The photo itself is sent to be read, as described above, and is not kept afterwards.</p>
+<p><strong>Receipt data.</strong> The merchant, date, line items and amounts read from your receipt are <strong>stored on your device only</strong>. They do pass through our server on the way back to you - our server receives what Anthropic read, holds it in memory for the moment it takes to return it to your phone, and writes none of it to a database or a log. No amount from a receipt appears in the usage events described below.</p>
 
-<p><strong>Your budgets and categories.</strong> Stored on your device only. The total of the budgets you set during setup is included in a usage event, so we can tell whether people finish setting one up. Individual category budgets are not.</p>
+<p><strong>Your budgets and categories.</strong> Stored on your device only. No budget amount is sent anywhere. A usage event records only *how* you set budgets up - typed in, estimated, or skipped - and how many categories you chose.</p>
 
 <p><strong>A random installation identifier.</strong> A random string generated on first launch, used to group usage events. It is not linked to your name, email or phone number, and it changes if you reinstall the app.</p>
 
-<p><strong>A device identifier, used only to count scans.</strong> To apply the free monthly scan limit, the app sends an identifier provided by your phone&#x27;s operating system - ANDROID_ID on Android, the vendor identifier on iOS. Unlike the installation identifier above, this one does not change when you reinstall the app, which is precisely why it is used: otherwise the free allowance could be reset by deleting and reinstalling. We never store it as-is. It is converted into an irreversible cryptographic fingerprint on our server using a secret key we hold, and only that fingerprint is written down, alongside a count and the current month. It is not an advertising identifier and is never linked to one.</p>
+<p><strong>A device identifier, used only to count scans.</strong> To apply the free monthly scan limit, the app sends an identifier provided by your phone&#x27;s operating system - ANDROID_ID on Android, the vendor identifier on iOS. Unlike the installation identifier above, this one does not change when you reinstall the app in ordinary use, which is precisely why it is used: otherwise the free allowance could be reset by deleting and reinstalling. It is not permanent - on Android it changes on a factory reset or if the app is signed with a different key, and on iOS it resets once every app from the same developer has been removed. We never store it as-is. It is converted into a cryptographic fingerprint on our server using a secret key we hold, and only that fingerprint is written down, alongside a count and the current month. Treat it as a pseudonym rather than as anonymous: it cannot be read back into your device&#x27;s identifier without our key, but it does still recognise the same device from one month to the next. That is what makes the free scan limit work. It is not an advertising identifier and is never linked to one.</p>
 
 <p><strong>Usage events.</strong> Events such as when a scan starts, whether it succeeded, which budget category a receipt was filed under, and how confident the reading was. These are tied to the random installation identifier above.</p>
 
 <p><strong>Standard app and device information,</strong> attached automatically to those usage events: app version and build, operating system and version, device model, manufacturer and type, language, timezone and screen size. This is used to diagnose problems, such as scanning failing on a particular phone. Location lookup is switched off, so we do not receive a city or country.</p>
 
-<h2>What we do not collect</h2>
+<h2>What we do not permanently store</h2>
 
 <ul>
-<li>We do not ask for or store your name, email address or phone number</li>
+<li>Except during optional Google sign-in, we do not request or store your name,</li>
+</ul>
+
+<p>email address or phone number. When you do sign in, your name and email reach our server inside the token we verify, and are discarded once it is checked - only your Google account identifier is written down. Google treats data as collected whenever it leaves your device, even when it is used and discarded immediately, which is why our Play Data safety declaration lists them</p>
+
+<ul>
 <li>We do not use Android&#x27;s automatic backup, so your receipts are not copied to</li>
 </ul>
 
@@ -102,11 +107,13 @@ a { color: #2F6F4E; }
 
 <p><strong>Google</strong> handles sign-in, if you choose to use it. They see that you signed in to this app. They do not receive your receipts, your budgets or anything about what you bought.</p>
 
-<p>That is the complete list.</p>
+<p><strong>Google, again, as our mail provider.</strong> Our support address is a Gmail account, so anything you email us - and anything you choose to attach - is stored in Gmail and readable by us. Please do not email receipt photos unless you mean to.</p>
+
+<p>That is the complete list of services that receive anything.</p>
 
 <h2>How long we keep things</h2>
 
-<p><strong>Receipt photos</strong> are held only for the seconds it takes to read them, then discarded. We never write them to disk.</p>
+<p><strong>Receipt photos.</strong> Rummage does not save receipt photos to its own persistent storage - our server holds one in memory for the seconds it takes to read, and never writes it to disk or to a log. The photo is transmitted to Anthropic to be read. Anthropic documents that standard commercial API inputs and outputs are deleted within 30 days, subject to exceptions it sets out, and we neither control nor can shorten that. Their terms, not ours, govern what happens to a photo once it reaches them.</p>
 
 <p><strong>Your receipts, budgets and categories</strong> live on your device, under your control, until you delete them or remove the app.</p>
 
@@ -122,11 +129,15 @@ a { color: #2F6F4E; }
 
 <p><strong>Take your data with you.</strong> Settings → Export receipts writes every receipt to a CSV file and hands it to whatever app you choose. Nothing is backed up anywhere - not by us and not to your Google Drive - so this export is the only copy that exists off your phone. If losing the app would matter to you, export it somewhere safe.</p>
 
-<p><strong>Delete your usage events.</strong> Settings shows an Installation ID. Email it to <a href="mailto:sales.quoteback@gmail.com">sales.quoteback@gmail.com</a> and we will delete the usage events recorded against it. That identifier is the only thing those events are attached to.</p>
+<p><strong>Delete your usage events.</strong> Settings shows an Installation ID. Email it to <a href="mailto:sales.quoteback@gmail.com">sales.quoteback@gmail.com</a> and we will ask PostHog to delete the events recorded against it. That identifier is the only thing those events are attached to. PostHog processes deletions in the background rather than instantly, so allow a few days.</p>
 
-<p><strong>Stop all collection.</strong> Uninstalling the app removes everything stored on the device, permanently - there is no backup to restore from. Erasing all data in Settings also issues a new Installation ID, which detaches you from anything recorded before.</p>
+<p><strong>Stop all collection.</strong> Uninstalling the app removes everything stored on the device, permanently - there is no backup to restore from.</p>
 
-<p><strong>Delete your account.</strong> Settings → Delete my account erases the record we hold for your Google account - the account identifier and your scan count - immediately and permanently. You are signed out at the same time. If you can no longer open the app, email us from the address you signed in with and we will do it for you.</p>
+<p>Erasing all data in Settings also issues a new Installation ID. Be clear about what that does and does not do: from then on, usage events are recorded against a new identifier with no link to the old one, but events already sent are still held by PostHog until they are deleted. Use the route above to have those removed as well.</p>
+
+<p><strong>Delete your account.</strong> Settings → Delete my account erases the record we hold for your Google account - the account identifier and your scan count - immediately and permanently. You are signed out at the same time.</p>
+
+<p><strong>If you have already removed the app,</strong> reinstall it and sign in with the same Google account, then use the same button. We ask you to do it this way for a reason worth stating: the only thing we store is your Google account identifier, not your email address, so an email from you gives us nothing we can match against. Signing in proves which record is yours in a way an email cannot.</p>
 
 <p>Two things that deletion deliberately does not do, because it would be misleading to imply otherwise. It does not delete your receipts: those are on your phone and never were ours. And it does not restore a scan allowance you have already used this month, because that is also counted against the device</p>
 
@@ -137,6 +148,34 @@ a { color: #2F6F4E; }
 <p>at [Deleting your account](./delete-account.html).</p>
 
 <p><strong>Sign out.</strong> Settings → Sign out removes your account and token from the phone. It does not delete the record on our side; use Delete my account for that.</p>
+
+<h2>Where Rummage is offered</h2>
+
+<p>Rummage is distributed only in the United States and is intended for users there. We do not offer it to, or direct it at, people in other countries.</p>
+
+<p>It is operated from the United States, and every service it relies on is configured to process data in United States regions: Anthropic (reading receipt photos), Railway (hosting), PostHog (usage events) and Google (sign-in). Those providers may use support staff or subprocessors elsewhere under their own terms, which we do not control and cannot promise on their behalf.</p>
+
+<h2>Your rights over your data</h2>
+
+<p>Most of these you can exercise yourself, without asking us:</p>
+
+<ul>
+<li><strong>See it</strong> - your receipts are on your phone, in the app.</li>
+<li><strong>Take it</strong> - Settings, Export receipts writes every receipt to a CSV file.</li>
+<li><strong>Correct it</strong> - open any receipt and edit the merchant, date, total or</li>
+</ul>
+
+<p>category.</p>
+
+<ul>
+<li><strong>Delete it</strong> - delete a single receipt, or Erase all data for everything on</li>
+</ul>
+
+<p>the device. Delete my account erases the record we hold for your account.</p>
+
+<p>For anything else, email <a href="mailto:sales.quoteback@gmail.com">sales.quoteback@gmail.com</a> and we will respond within 30 days.</p>
+
+<p><strong>Automated decision-making.</strong> Reading a receipt is automated, but it decides nothing about you - it fills in fields you can edit. Nothing in Rummage produces a legal or similarly significant effect.</p>
 
 <h2>Children</h2>
 
