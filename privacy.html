@@ -106,7 +106,13 @@ a { color: #2F6F4E; }
 
 <h2>How long we keep things</h2>
 
-<p>Receipt photos are held only for the seconds it takes to read them, then discarded. Everything else lives on your device, under your control.</p>
+<p><strong>Receipt photos</strong> are held only for the seconds it takes to read them, then discarded. We never write them to disk.</p>
+
+<p><strong>Your receipts, budgets and categories</strong> live on your device, under your control, until you delete them or remove the app.</p>
+
+<p><strong>Your scan count.</strong> If you sign in, we keep one row - your Google account identifier, a number, and a month - until you delete your account. The equivalent count for your device is kept for the current month and is discarded when the month ends.</p>
+
+<p><strong>Usage events</strong> are held by PostHog under their retention policy, attached to a random installation identifier and to nothing else.</p>
 
 <h2>Your choices</h2>
 
@@ -120,7 +126,17 @@ a { color: #2F6F4E; }
 
 <p><strong>Stop all collection.</strong> Uninstalling the app removes everything stored on the device, permanently - there is no backup to restore from. Erasing all data in Settings also issues a new Installation ID, which detaches you from anything recorded before.</p>
 
-<p><strong>If you have signed in,</strong> the only thing we hold is a row recording your Google account ID, how many scans you have used and in which month. Email us from the address you signed in with and we will delete it. Signing out in the app removes your account and token from the phone, but does not by itself delete that row.</p>
+<p><strong>Delete your account.</strong> Settings → Delete my account erases the record we hold for your Google account - the account identifier and your scan count - immediately and permanently. You are signed out at the same time. If you can no longer open the app, email us from the address you signed in with and we will do it for you.</p>
+
+<p>Two things that deletion deliberately does not do, because it would be misleading to imply otherwise. It does not delete your receipts: those are on your phone and never were ours. And it does not restore a scan allowance you have already used this month, because that is also counted against the device</p>
+
+<ul>
+<li>otherwise deleting an account would be a way to reset the limit. Full detail</li>
+</ul>
+
+<p>at [Deleting your account](./delete-account.html).</p>
+
+<p><strong>Sign out.</strong> Settings → Sign out removes your account and token from the phone. It does not delete the record on our side; use Delete my account for that.</p>
 
 <h2>Children</h2>
 
