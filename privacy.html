@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy - Ferra</title>
+<title>Privacy Policy - Rummage</title>
 <style>
 :root { color-scheme: light dark; }
 body { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 5rem;
@@ -23,15 +23,15 @@ a { color: #2F6F4E; }
 </style>
 </head>
 <body>
-<h1>Ferra Privacy Policy</h1>
+<h1>Rummage Privacy Policy</h1>
 
-<p class="updated"><strong>Last updated: 6 September 2026</strong></p>
+<p class="updated"><strong>Last updated: 12 September 2026</strong></p>
 
-<p>This policy describes what Ferra does with your information. It is written to match what the app actually does today. If that changes, this page changes with it.</p>
+<p>This policy describes what Rummage does with your information. It is written to match what the app actually does today. If that changes, this page changes with it.</p>
 
 <h2>Who we are</h2>
 
-<p>Ferra is operated by Ishaan Chauhan. You can reach us at <a href="mailto:sales.quoteback@gmail.com">sales.quoteback@gmail.com</a>.</p>
+<p>Rummage is operated by Ishaan Chauhan. You can reach us at <a href="mailto:sales.quoteback@gmail.com">sales.quoteback@gmail.com</a>.</p>
 
 <h2>What we collect</h2>
 
@@ -41,7 +41,9 @@ a { color: #2F6F4E; }
 
 <p><strong>Your budgets and categories.</strong> Stored on your device only. The total of the budgets you set during setup is included in a usage event, so we can tell whether people finish setting one up. Individual category budgets are not.</p>
 
-<p><strong>A random installation identifier.</strong> A random string generated on first launch, used to apply usage limits fairly and to group usage events. It is not linked to your name, email or phone number, and it changes if you reinstall the app.</p>
+<p><strong>A random installation identifier.</strong> A random string generated on first launch, used to group usage events. It is not linked to your name, email or phone number, and it changes if you reinstall the app.</p>
+
+<p><strong>A device identifier, used only to count scans.</strong> To apply the free monthly scan limit, the app sends an identifier provided by your phone&#x27;s operating system - ANDROID_ID on Android, the vendor identifier on iOS. Unlike the installation identifier above, this one does not change when you reinstall the app, which is precisely why it is used: otherwise the free allowance could be reset by deleting and reinstalling. We never store it as-is. It is converted into an irreversible cryptographic fingerprint on our server using a secret key we hold, and only that fingerprint is written down, alongside a count and the current month. It is not an advertising identifier and is never linked to one.</p>
 
 <p><strong>Usage events.</strong> Events such as when a scan starts, whether it succeeded, which budget category a receipt was filed under, and how confident the reading was. These are tied to the random installation identifier above.</p>
 
@@ -69,9 +71,26 @@ a { color: #2F6F4E; }
 <p>any other app&#x27;s data</p>
 
 <ul>
-<li>We do not have accounts, so we hold no login credentials</li>
+<li>We never receive your Google password. Signing in happens through Google, and</li>
+</ul>
+
+<p>we only receive a signed token proving which account you used</p>
+
+<ul>
 <li>We do not sell your data to anyone, and we do not share it for advertising</li>
 </ul>
+
+<h2>If you sign in</h2>
+
+<p>Signing in is optional. You can scan receipts without an account. Signing in is required only to <strong>save</strong> a receipt, and it raises the free scan allowance from one tied to your phone to one that follows your account.</p>
+
+<p><strong>What we receive.</strong> A token from Google confirming your identity. It contains your Google account ID, your email address and your name. We verify the token&#x27;s signature on every request and then discard it.</p>
+
+<p><strong>What we keep.</strong> Your Google account ID, stored against a scan count and the current month. That is the entire record. We do not store your email address or your name on our servers - those stay on your phone so the app can show who is signed in. We do not store anything about what you bought against your account.</p>
+
+<p><strong>What signing in does not do.</strong> It does not back up your receipts. It does not sync them between devices. Your receipts remain on your phone and are lost if you uninstall the app, whether or not you have an account.</p>
+
+<p><strong>Signing out</strong> removes your account and token from the phone. To delete the scan-count record we hold, email us and include the address you signed in with.</p>
 
 <h2>Who else processes your data</h2>
 
@@ -80,6 +99,8 @@ a { color: #2F6F4E; }
 <p><strong>Railway</strong> hosts our server, and processes requests in transit.</p>
 
 <p><strong>PostHog</strong> receives the usage events and app information described above. It does not receive receipt photos or any amount from a receipt.</p>
+
+<p><strong>Google</strong> handles sign-in, if you choose to use it. They see that you signed in to this app. They do not receive your receipts, your budgets or anything about what you bought.</p>
 
 <p>That is the complete list.</p>
 
@@ -99,11 +120,11 @@ a { color: #2F6F4E; }
 
 <p><strong>Stop all collection.</strong> Uninstalling the app removes everything stored on the device, permanently - there is no backup to restore from. Erasing all data in Settings also issues a new Installation ID, which detaches you from anything recorded before.</p>
 
-<p>We hold no account for you, so there is nothing else to delete or export.</p>
+<p><strong>If you have signed in,</strong> the only thing we hold is a row recording your Google account ID, how many scans you have used and in which month. Email us from the address you signed in with and we will delete it. Signing out in the app removes your account and token from the phone, but does not by itself delete that row.</p>
 
 <h2>Children</h2>
 
-<p>Ferra is not directed at children under 13 and we do not knowingly collect information from them.</p>
+<p>Rummage is not directed at children under 13 and we do not knowingly collect information from them.</p>
 
 <h2>Changes</h2>
 
